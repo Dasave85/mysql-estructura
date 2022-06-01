@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS optica;
+DROP DATABASE IF EXISTS optica;
+
+CREATE DATABASE optica;
 
 USE optica;
 
@@ -36,14 +38,6 @@ CREATE TABLE IF NOT EXISTS gafas(
     FOREIGN KEY (proveedor) REFERENCES proveedor (id_proveedor)
 );
 
-CREATE TABLE IF NOT EXISTS ventas(
-    id_venta INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    articulo INT (10) NOT NULL,
-    vendedor VARCHAR (20) NOT NULL,
-    fecha DATE NOT NULL,
-    FOREIGN KEY (articulo) REFERENCES gafas (id_articulo)
-);
-
 CREATE TABLE IF NOT EXISTS cliente(
     id_cliente INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (20) NOT NULL,
@@ -53,6 +47,16 @@ CREATE TABLE IF NOT EXISTS cliente(
     fecha_registro DATE NOT NULL,
     recomendacion_del_cliente INT (5) NULL,
     CONSTRAINT fk_recomendacion FOREIGN KEY (recomendacion_del_cliente) REFERENCES cliente (id_cliente)
+);
+
+CREATE TABLE IF NOT EXISTS ventas(
+    id_venta INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    articulo INT (10) NOT NULL,
+    vendedor VARCHAR (20) NOT NULL,
+    fecha_venta DATE NOT NULL,
+    cliente INT (10) NOT NULL,
+    FOREIGN KEY (cliente) REFERENCES cliente (id_cliente),
+    FOREIGN KEY (articulo) REFERENCES gafas (id_articulo)
 );
 
 INSERT INTO proveedor (nombre, calle, numero, piso, puerta, ciudad, c_p, pais, telefono, fax, nif)
@@ -87,9 +91,24 @@ VALUES
 ('Diego Robles', 'C/Colon 66', '655546777', 'diegorobles@gmail.com', '2018-09-04', '1' )
 ;
 
-INSERT INTO ventas (articulo, vendedor, fecha)
+INSERT INTO ventas (articulo, vendedor, fecha_venta, cliente)
 VALUES
-('1', 'Roberto', '2019-02-02'), 
-('2', 'Roberto', '2020-09-09'),
-('1', 'Maria', '2019-12-08-'),
-('5', 'Veronica', '2021-01-04')
+('1', 'Roberto', '2019-02-02','2'), 
+('2', 'Roberto', '2020-09-09', '1'),
+('1', 'Maria', '2019-12-08-', '2'),
+('5', 'Veronica', '2021-01-04', '3'),
+('3', 'Roberto', '2019-01-04', '4')
+;
+
+SELECT ventas.*, cliente.nombre
+FROM ventas
+INNER JOIN cliente ON ventas.`cliente` = cliente.id_cliente 
+WHERE ventas.cliente = 2;
+SELECT ventas.vendedor, ventas.fecha_venta, gafas.* 
+FROM ventas inner JOIN gafas ON ventas.articulo = gafas.id_articulo 
+WHERE `fecha_venta` LIKE '%2019%' AND  `vendedor` = 'Roberto';
+
+SELECT ventas.articulo, ventas.fecha_venta, proveedor.* 
+FROM ventas 
+INNER JOIN gafas ON ventas.articulo = gafas.id_articulo 
+INNER JOIN proveedor ON gafas.proveedor = proveedor.id_proveedor
