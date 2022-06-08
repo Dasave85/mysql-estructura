@@ -257,3 +257,19 @@ INSERT INTO alumno_se_matricula_asignatura VALUES (19, 7, 5);
 INSERT INTO alumno_se_matricula_asignatura VALUES (19, 8, 5);
 INSERT INTO alumno_se_matricula_asignatura VALUES (19, 9, 5);
 INSERT INTO alumno_se_matricula_asignatura VALUES (19, 10, 5);
+
+SELECT APELLIDO1, APELLIDO2, NOMBRE FROM persona WHERE `tipo` = 'alumno' ORDER BY APELLIDO1 ASC , APELLIDO2 ASC, NOMBRE ASC;
+
+SELECT APELLIDO1, APELLIDO2, NOMBRE FROM persona WHERE `tipo` = 'alumno' AND TELEFONO IS NULL;
+
+SELECT * FROM persona WHERE `tipo` = 'alumno' AND fecha_nacimiento LIKE '1999%';
+
+SELECT * FROM persona WHERE `tipo` = 'PROFESOR' AND NIF LIKE '%K';
+
+SELECT * FROM ASIGNATURA WHERE cuatrimestre = 1 AND curso = 3 AND id_grado = 7;
+
+SELECT PERSONA.NOMBRE, PERSONA.apellido1, PERSONA.apellido2, DEPARTAMENTO.nombre FROM PROFESOR INNER JOIN PERSONA ON PROFESOR.id_profesor = PERSONA.ID INNER JOIN departamento ON PROFESOR.id_departamento = DEPARTAMENTO.ID ORDER BY apellido1, apellido2, PERSONA.nombre;
+
+SELECT ASIGNATURA.nombre, CURSO_ESCOLAR.anyo_inicio, CURSO_ESCOLAR.anyo_fin FROM alumno_se_matricula_asignatura INNER JOIN ASIGNATURA ON id_asignatura = ASIGNATURA.ID INNER JOIN CURSO_ESCOLAR ON id_curso_escolar = CURSO_ESCOLAR.id INNER JOIN PERSONA ON id_alumno = PERSONA.ID WHERE NIF = '26902806M';
+
+SELECT distinct departamento.nombre FROM ASIGNATURA INNER JOIN GRADO ON ASIGNATURA.id_grado = GRADO.ID INNER JOIN PROFESOR ON ASIGNATURA.id_profesor = PROFESOR.id_profesor INNER JOIN departamento ON PROFESOR.id_departamento = DEPARTAMENTO.ID WHERE GRADO.NOMBRE = 'Grado en Ingeniería Informática (Plan 2015)'
