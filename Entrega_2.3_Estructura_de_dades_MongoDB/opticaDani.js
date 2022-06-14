@@ -4,7 +4,7 @@ db.dropDatabase();
 
 db.clientes.insertMany([
     {
-        '_id': '1',
+        '_id': ObjectId('000000000000000000000001'),
         'name': 'Carlos Martinez',
         'direccion': {
             'calle': 'c/diputacion',
@@ -21,7 +21,7 @@ db.clientes.insertMany([
         'recomendacion cliente': null
     },
     {
-        '_id': '2',
+        '_id': ObjectId('000000000000000000000002'),
         'name': 'Maria Fernandez',
         'direccion': {
             'calle': 'c/Peru',
@@ -35,10 +35,10 @@ db.clientes.insertMany([
         'telefono': 772456983,
         'email': 'mariafernanadez@gmail.com',
         'fecha registro': new Date('2020-06-05'),
-        'recomandacion cliente': { '_id cliente': '1' }
+        'recomandacion cliente': { '_id': ObjectId('000000000000000000000001') }
     },
     {
-        '_id': '3',
+        '_id': ObjectId('000000000000000000000003'),
         'name': 'Tomas Lopez',
         'direccion': {
             'calle': 'c/Roma',
@@ -52,13 +52,13 @@ db.clientes.insertMany([
         'telefono': 668321459,
         'email': 'tomaslopez@gmail.com',
         'fecha registro': new Date('2022-01-01'),
-        'recomendacion cliente': { '_id cliente': '1'}
+        'recomendacion cliente': { '_id' : ObjectId('000000000000000000000001')}
     }
 ]);
 
 db.proveedor.insertMany([
     {
-        '_id': '1',
+        '_id': ObjectId('000000000000000000000001'),
         'name': 'Sun Vision S.L',
         'direccion': {
             'calle': 'c/gracia',
@@ -74,7 +74,7 @@ db.proveedor.insertMany([
         'NIF': 'C86547985'
     },
     {
-        '_id': '2',
+        '_id': ObjectId('000000000000000000000002'),
         'name': 'GafasyGafas S.L',
         'direccion': {
             'calle': 'c/roma',
@@ -90,7 +90,7 @@ db.proveedor.insertMany([
         'NIF': 'A85642378'
     },
     {
-        '_id': '3',
+        '_id': ObjectId('000000000000000000000003'),
         'name': 'gafas molonas S.L',
         'direccion': {
             'calle': 'c/Barcelona',
@@ -109,25 +109,25 @@ db.proveedor.insertMany([
 
 db.marcaGafas.insertMany([
     {
-        '_id': '1',
+        '_id': ObjectId('000000000000000000000001'),
         'marca': 'Tous',
-        'proveedor': { '_id proveedor': '1' }
+        'proveedor': { '_id': ObjectId('000000000000000000000001') }
     },
     {
-        '_id': '2',
+        '_id': ObjectId('000000000000000000000002'),
         'marca': 'RayBan',
-        'proveedor': { '_id proveedor': '1' }
+        'proveedor': { '_id': ObjectId('000000000000000000000002') }
     },
     {
-        '_id': '3',
+        '_id': ObjectId('000000000000000000000003'),
         'marca': 'Okley',
-        'proveedor': { '_id proveedor': '2' }
+        'proveedor': { '_id': ObjectId('000000000000000000000001') }
     }
 ]);
 
 db.gafas.insertMany([
     {
-        'marca': { '_id marca': '1' },
+        'marca': { '_id': ObjectId('000000000000000000000001') },
         'vidrio derecho': {
             'graduacion': 0.50,
             'color': 'azul'
@@ -141,14 +141,14 @@ db.gafas.insertMany([
             'color': 'blanco'
         },
         'precio': 199.99,
-        'cliente compra': { '_id cliente': '1' },
+        'cliente compra': { '_id': ObjectId('000000000000000000000001') },
         'venta': {
             'trabajador': 'Raul',
             'fecha venta': new Date('2022-01-01')
         }
     },
     {
-        'marca': { '_id marca': '2' },
+        'marca': { '_id': ObjectId('000000000000000000000002') },
         'vidrio derecho': {
             'graduacion': 0.20,
             'color': null
@@ -162,7 +162,7 @@ db.gafas.insertMany([
             'color': 'negro'
         },
         'precio': 250.45,
-        'cliente compra': { '_id cliente': '2' },
+        'cliente compra': { '_id': ObjectId('000000000000000000000002') },
         'venta': {
             'trabajador': 'Jorge',
             'fecha venta': new Date('2022-05-12')
