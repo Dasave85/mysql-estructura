@@ -128,12 +128,9 @@ db.marcaGafas.insertMany([
 db.gafas.insertMany([
     {
         'marca': { '_id': ObjectId('000000000000000000000001') },
-        'vidrio derecho': {
-            'graduacion': 0.50,
-            'color': 'azul'
-        },
-        'vidrio izquierdo': {
-            'graduacion': 0.55,
+        'vidrios': {
+            'graduacion  derecho': 0.50,
+            'graduacion izquierdo': 0.55,
             'color': 'azul'
         },
         'montura': {
@@ -149,13 +146,10 @@ db.gafas.insertMany([
     },
     {
         'marca': { '_id': ObjectId('000000000000000000000002') },
-        'vidrio derecho': {
-            'graduacion': 0.20,
-            'color': null
-        },
-        'vidrio izquierdo': {
-            'graduacion': 0.25,
-            'color': null
+        'vidrios': {
+            'graduacion  derecho': 0.20,
+            'graduacion izquierdo': 0.25,
+            'color': 'azul'
         },
         'montura': {
             'tipo': 'pasta',
