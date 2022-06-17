@@ -1,0 +1,46 @@
+use('restaurantes');
+
+//db.restaurante.find();
+
+//db.restaurante.find({}, {'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({}, {'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1, '_id' : 0});
+
+//db.restaurante.find({}, {'restaurant_id': 1, 'name': 1, 'borough': 1, 'address.zipcode': 1, '_id' : 0});
+
+//db.restaurante.find({"borough": "Bronx"});
+
+//db.restaurante.find({"borough": "Bronx"}).limit(5);
+
+//db.restaurante.find({"borough": "Bronx"}).limit(5).skip(5)
+
+//db.restaurante.find({'grades.score': {$gt:90}});
+
+//db.restaurante.find({'grades': {$elemMatch: {'score': {$gt: 80 , $lt: 100}}}});
+
+//db.restaurante.find({'address.coord' : {$lt: -95.754168}});
+
+//db.restaurante.find({ $and: [{'grades.score': {$gt:70}}, {'address.coord' : {$lt: -65.754168}}, {'cuisine': {$ne: 'American '}}]});
+
+//db.restaurante.find({'cuisine': {$ne: 'American '}, 'grades.score': {$gt:70}, 'address.coord' : {$lt: -65.754168}});
+
+//db.restaurante.find({'cuisine': {$ne: 'American '}, 'grades.grade': 'A', 'borough': {$ne : 'Brooklyn'}}).sort({'cuisine': -1});
+
+//db.restaurante.find({'name':/^Wil/},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({'name':/ces$/},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({'name': {$regex : 'Reg'}},{'name':1,'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({'borough': 'Bronx', 'cuisine': {$in: ['American ', 'Chinese']}});
+
+//db.restaurante.find({'borough':{$in:['Bronx', 'Brooklyn', 'Queens ', 'Staten Island']}},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({'borough':{$nin:['Bronx', 'Brooklyn', 'Queens', 'Staten Island']}},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({'grades.score': {$lt: 10}},{'grades.score.$': 1, 'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
+//db.restaurante.find({$or:[{'name':/^Wil/, 'cuisine': {$nin: ['American ', 'Chinese']}}]},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
+
