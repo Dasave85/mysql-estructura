@@ -40,7 +40,26 @@ use('restaurantes');
 
 //db.restaurante.find({'grades.score': {$lt: 10}},{'grades.score.$': 1, 'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
 
-//db.restaurante.find({},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
-
 //db.restaurante.find({$or:[{'name':/^Wil/, 'cuisine': {$nin: ['American ', 'Chinese']}}]},{'restaurant_id': 1, 'name': 1, 'borough': 1, 'cuisine': 1});
 
+//db.restaurante.find({'grades.grade': 'A', 'grades.score': 11, 'grades.date': ISODate("2014-08-11T00:00:00Z")}, {'restaurant_id': 1, 'name': 1, 'grades': 1});
+
+//db.restaurante.find({'grades.1.grade': 'A', 'grades.score': 9, 'grades.date': ISODate("2014-08-11T00:00:00Z")}, {'restaurant_id': 1, 'name': 1, 'grades': 1});
+
+//db.restaurante.find({'address.coord.1': {$gt: 42, $lte:52}},{'restaurant_id': 1, 'name': 1, 'address': 1, });
+
+//db.restaurante.find().sort({'name': 1});
+
+//db.restaurante.find().sort({'name': -1});
+
+//db.restaurante.find({},{'cuisine': 1, 'borough': 1 }).sort({'cuisine': 1, 'borough': -1});
+
+//db.restaurante.find({},{'address.street':null});
+
+//db.restaurante.find({'address.coord': {$type:'double'}});
+
+//db.restaurante.find({'grades.score': {$mod: [7 , 0] }}, {'restaurant_id': 1, 'name': 1, 'grade': 1});
+
+//db.restaurante.find({'name': {$regex: /mon/ }}, {'name': 1, 'borough': 1, 'address.coord': 1, 'cuisine':1});
+
+//db.restaurante.find({'name': {$regex: '^Mon' }}, {'name': 1, 'borough': 1, 'address.coord': 1, 'cuisine':1});
